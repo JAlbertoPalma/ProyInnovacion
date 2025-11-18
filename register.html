@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri-Log - Registrar Canasta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght+400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="initializeRegisterScreen()">
+
+    <div class="container">
+        <div class="header">
+            <span class="logo">🤝</span>
+            <h1>Registro de Donación</h1>
+        </div>
+
+        <form onsubmit="registerCanasta(event)">
+            <div class="form-group">
+                <label for="reg-correo">Correo del Donante (Para Notificación):</label>
+                <input type="email" id="reg-correo" placeholder="donante@ejemplo.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="reg-contenido">Contenido Detallado de la Canasta:</label>
+                <textarea id="reg-contenido" placeholder="Ej. Arroz (5 kg), Atún (2 latas), Lentejas (1 kg), Pasta (1 paquete)." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="reg-clasificacion">Clasificación de la Ayuda:</label>
+                <div class="select-wrapper">
+                    <select id="reg-clasificacion" required>
+                        <option value="" disabled selected>Seleccione el tipo de ayuda</option>
+                        <option value="no-perecedero">Alimentos No Perecederos</option>
+                        <option value="perecedero">Alimentos Perecederos</option>
+                        <option value="kits-higiene">Kits de Higiene</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="reg-id">ID de Trazabilidad (Blockchain Mock):</label>
+                <input type="text" id="reg-id" value="" readonly title="ID generado automáticamente, que será la clave del registro inmutable.">
+            </div>
+
+
+            <div class="actions">
+                <a href="index.html" class="btn-secondary">Volver</a>
+                <button type="submit" class="btn-primary">Registrar y Generar QR</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

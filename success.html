@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri-Log - Registro Exitoso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght+400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="initializeSuccessScreen()">
+
+    <div class="container">
+        <div class="header">
+            <span class="logo">🎉</span>
+            <h1>Canasta Registrada</h1>
+        </div>
+        <div class="confirmation-box">
+            <div class="confirmation-icon">✅</div>
+            <h2>Registro Inmutable Creado</h2>
+            <p>La información de la canasta ha sido registrada en el sistema de trazabilidad (Blockchain Mock).</p>
+            <p><strong>ID de Seguimiento:</strong></p>
+            <div class="tracking-id" id="confirmed-id"></div>
+
+            <p>Pegue el siguiente Código QR en la canasta antes de su envío a bodega:</p>
+            <div class="qr-mock">
+                [CÓDIGO QR MOCKEADO] <br> Escanea: <span id="qr-text"></span>
+            </div>
+        </div>
+
+        <div class="actions" style="justify-content: space-between;">
+            <button type="button" class="btn-secondary" onclick="alert('Simulación: Imprimiendo etiqueta QR')">
+                <span class="icon-mock icon-print"></span> Imprimir Etiqueta
+            </button>
+            <a href="register.html" class="btn-primary">Registrar Otra Canasta</a>
+        </div>
+    </div>
+
+</body>
+</html>
