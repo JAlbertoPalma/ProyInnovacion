@@ -137,7 +137,7 @@ button, a.btn-primary, a.btn-secondary {
 .mock-preview {
     background-color: #f0f0f0;
     border: 2px dashed #ccc;
-    height: 150px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,6 +145,18 @@ button, a.btn-primary, a.btn-secondary {
     font-style: italic;
     border-radius: 6px;
     margin-bottom: 15px;
+}
+
+.mock2-preview {
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-style: italic;
+    border-radius: 6px;
 }
 
 /* Iconos (Mockeados con texto/emoji para simplicidad) */

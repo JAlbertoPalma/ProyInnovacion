@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri-Log - Reportes y Auditoría</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header" style="border-bottom-color: #7986CB;">
+            <span class="logo" style="color: #7986CB;">📊</span>
+            <h1>Reportes y Auditoría</h1>
+        </div>
+        <p>Vista de alto nivel del sistema de trazabilidad (Mock de datos inmutables).</p>
+
+        <div class="report-box" style="margin-bottom: 25px;">
+            <h3>Resumen del Sistema</h3>
+            <div class="grid-stats">
+                <div class="stat-item">
+                    <strong>Total Registros (Mock):</strong>
+                    <div class="stat-value">1,452</div>
+                </div>
+                <div class="stat-item">
+                    <strong>Entregados (Completados):</strong>
+                    <div class="stat-value" style="color: #388e3c;">895</div>
+                </div>
+                <div class="stat-item">
+                    <strong>Pendientes (Almacén):</strong>
+                    <div class="stat-value" style="color: #FF9800;">557</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <h4>Estado Actual de Trazabilidad</h4>
+            <div class="donut-chart-mock">
+                <div class="donut-slice complete" style="--p:62; --c:#4CAF50;">62%</div>
+            </div>
+            <div class="chart-legend">
+                <span style="color:#4CAF50;">•</span> 62% Trazabilidad Cerrada (Entregada)
+                <br>
+                <span style="color:#FF9800;">•</span> 38% Trazabilidad Abierta (Pendiente)
+            </div>
+        </div>
+        
+        <div class="chart-section">
+            <h4>Clasificación de Donaciones (Volumen)</h4>
+            <div class="bar-chart-mock">
+                <div class="bar-group">
+                    <div class="bar-label">No Perecederos (65%)</div>
+                    <div class="bar" style="width: 65%; background-color: #3f51b5;"></div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar-label">Perecederos (20%)</div>
+                    <div class="bar" style="width: 20%; background-color: #FF9800;"></div>
+                </div>
+                <div class="bar-group">
+                    <div class="bar-label">Kits de Higiene (15%)</div>
+                    <div class="bar" style="width: 15%; background-color: #7986CB;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #ddd; margin: 30px 0;">
+
+        <div style="text-align: center;">
+            <p style="font-weight: 700; color: #555;">Ver el detalle de una donación específica:</p>
+            <a href="rastreo.html" class="btn-primary" style="background-color: #3f51b5;">
+                Ir a la Vista de Rastreo (Donante) 🔍
+            </a>
+        </div>
+
+
+        <div class="actions">
+            <a href="index.html" class="btn-secondary">Volver al Panel</a>
+            <button type="button" class="btn-primary" style="background-color: #7986CB;" onclick="alert('Simulación: Generando archivo CSV/PDF de auditoría.')">
+                Exportar Datos
+            </button>
+        </div>
+    </div>
+
+    <style>
+        /* --- ESTILOS DE GRÁFICAS --- */
+
+        .chart-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+        }
+
+        h4 {
+            color: #333;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        /* 1. Bar Chart Mock */
+        .bar-chart-mock {
+            margin-top: 15px;
+        }
+
+        .bar-group {
+            margin-bottom: 10px;
+        }
+
+        .bar-label {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .bar {
+            height: 20px;
+            border-radius: 4px;
+            transition: width 0.5s ease-out; /* Mock de animación */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* 2. Donut Chart Mock (Usa CSS Conic-Gradient) */
+        .donut-chart-mock {
+            width: 150px;
+            height: 150px;
+            margin: 15px auto;
+            border-radius: 50%;
+            position: relative;
+            background: conic-gradient(#4CAF50 0% 62%, #FF9800 62% 100%); /* 62% vs 38% */
+        }
+        
+        .donut-chart-mock::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: white; /* Centro blanco */
+        }
+
+        .donut-slice {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 700;
+            color: #4CAF50;
+            font-size: 18px;
+        }
+        
+        .chart-legend {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* Estilos ya existentes del contenedor (por si acaso no están en styles.css) */
+        .report-box {
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 10px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 5px;
+            color: #333;
+        }
+    </style>
+</body>
+</html>

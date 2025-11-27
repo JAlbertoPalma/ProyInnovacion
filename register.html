@@ -18,9 +18,14 @@
 
         <form onsubmit="registerCanasta(event)">
             <div class="form-group">
-                <label for="reg-correo">Correo del Donante (Para Notificación):</label>
-                <input type="email" id="reg-correo" placeholder="donante@ejemplo.com" required>
-            </div>
+                <label for="reg-telefono">Teléfono del Donante (Para Notificación):</label>
+                <div style="display: flex; gap: 5px;">
+                    <select id="reg-lada" required style="width: auto;">
+                        <option value="+52" disabled selected >MX +52</option>
+                        <option value="+1">US +1</option>
+                    </select>
+                <input type="tel" id="reg-telefono" placeholder="Número de telefono" required style="flex-grow: 1;">
+                </div>
 
             <div class="form-group">
                 <label for="reg-contenido">Contenido Detallado de la Canasta:</label>

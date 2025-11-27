@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri-Log - Rastrea tu Donación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="initializeRastreo()">
+
+    <div class="container">
+        <div class="header" style="border-bottom-color: #3f51b5;">
+            <span class="logo" style="color: #3f51b5;">🔍</span>
+            <h1>Rastrea tu Donación</h1>
+        </div>
+
+        <form id="rastreo-form" onsubmit="trackDonation(event)">
+            <div class="form-group">
+                <label for="rastreo-id">Ingresa el ID de Trazabilidad: </label>
+                <input type="text" id="rastreo-id" placeholder="Ej. VL-1061-1A" required value="VL-9348-1A">
+            </div>
+            <button type="submit" class="btn-primary btn-full" style="background-color: #3f51b5;">Buscar Donación</button>
+        </form>
+
+        <div id="rastreo-resultado" style="display: none; margin-top: 30px;">
+            <h2>Estado de la Canasta: <span id="rastreo-id-mostrar"></span></h2>
+            
+            <div class="timeline">
+                <div class="timeline-item done">
+                    <span class="date">2025-11-26</span>
+                    <p>✅ **Donación Registrada** (ID Creado, Inmutable)</p>
+                </div>
+                <div class="timeline-item current">
+                    <span class="date">2025-11-27</span>
+                    <p>📦 **En Almacén Central** (Verificación de Contenido)</p>
+                </div>
+                <div class="timeline-item pending">
+                    <span class="date">Pendiente</span>
+                    <p>🚚 **En Ruta de Entrega** (Asignación de Beneficiario)</p>
+                </div>
+                <div class="timeline-item pending">
+                    <span class="date">Pendiente</span>
+                    <p>🎉 **Entrega Finalizada** (Evidencia fotográfica adjunta)</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px;">
+                <span style="font-weight: 700;">Próximo Paso:</span> La canasta será asignada a un sector de entrega.
+            </p>
+        </div>
+    </div>
+
+    <style>
+        /* Estilos del Timeline de Rastreo */
+        .timeline {
+            border-left: 3px solid #ccc;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            padding: 10px 0;
+            line-height: 1.4;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 15px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ccc;
+            border: 3px solid white;
+        }
+        .timeline-item.done::before {
+            background-color: #4CAF50; 
+        }
+        .timeline-item.current::before {
+            background-color: #FF9800;
+        }
+        .timeline-item.pending::before {
+            background-color: #f0f0f0;
+        }
+        .timeline-item p {
+            margin: 0;
+        }
+        .timeline-item .date {
+            display: block;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</body>
+</html>

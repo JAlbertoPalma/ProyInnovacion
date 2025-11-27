@@ -24,29 +24,26 @@ function registerCanasta(event) {
     event.preventDefault();
 
     const id = document.getElementById('reg-id').value;
-    const correo = document.getElementById('reg-correo').value;
+    const telefono = document.getElementById('reg-telefono').value;
 
-    console.log(`Canasta Registrada: ID ${id} para donante ${correo}`);
+    console.log(`Canasta Registrada: ID ${id} para donante ${telefono}`);
 
     // Guarda el ID y redirige a la página de éxito
     saveTrackingID(id);
     window.location.href = 'success.html';
 }
 
-// Inicializa la pantalla de éxito al cargar
 function initializeSuccessScreen() {
     const id = getTrackingID();
     document.getElementById('confirmed-id').textContent = id;
     document.getElementById('qr-text').textContent = id;
 }
 
-// Lógica de verificación en la pantalla de entrega
 function verifyCanasta(event) {
     event.preventDefault();
     const id = document.getElementById('scan-input').value;
 
     if (id) {
-        // Simulación de encontrar el registro
         document.getElementById('delivery-details').style.display = 'block';
         document.getElementById('scan-form').style.display = 'none';
         document.getElementById('delivery-id').textContent = id;
@@ -56,12 +53,45 @@ function verifyCanasta(event) {
     }
 }
 
-// FUNCIÓN MOCKEADA DE ENTREGA FINAL
+// FFunción mockeada de la entrega
 function completeDelivery() {
     const id = document.getElementById('scan-input-hidden').value;
 
     alert(`¡Entrega ${id} marcada como COMPLETADA! El registro inmutable ha finalizado.`);
 
-    // Regresa al menú principal
     window.location.href = 'index.html';
+}
+
+// Lógica para simular el rastreo (se ejecuta al enviar el formulario en rastreo.html)
+function trackDonation(event) {
+    event.preventDefault();
+    const rastreoIdInput = document.getElementById('rastreo-id');
+    const id = rastreoIdInput.value.trim();
+    const resultadoDiv = document.getElementById('rastreo-resultado');
+    const idMostrar = document.getElementById('rastreo-id-mostrar');
+    
+    const lastID = getTrackingID(); 
+
+    if (id === lastID) {
+        idMostrar.textContent = id;
+        resultadoDiv.style.display = 'block';
+        alert(`ID ${id} encontrado. Mostrando estado de rastreo mockeado.`);
+        
+    } else if (id === 'VL-9348-1A') {
+        idMostrar.textContent = id;
+        resultadoDiv.style.display = 'block';
+        
+        const items = document.querySelectorAll('.timeline-item');
+        items.forEach(item => {
+            item.classList.remove('current', 'pending');
+            item.classList.add('done');
+        });
+        document.querySelector('.timeline-item:last-child p').innerHTML = '🎉 **Entrega Finalizada** (Verificado con foto adjunta)';
+        alert(`ID ${id} encontrado. ¡Entrega completada!`);
+
+    } else {
+        // ID no encontrado o inválido
+        resultadoDiv.style.display = 'none';
+        alert('ID no encontrado. Por favor, verifique el código de trazabilidad.');
+    }
 }
